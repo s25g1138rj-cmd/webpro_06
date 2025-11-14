@@ -23,6 +23,7 @@ app.get("/omikuji1", (req, res) => {
   let luck = '';
   if( num==1 ) luck = '大吉';
   else if( num==2 ) luck = '中吉';
+  else if( num==3 ) luck = '小吉';
 
   res.send( '今日の運勢は' + luck + 'です' );
 });
