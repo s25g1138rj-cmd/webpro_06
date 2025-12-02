@@ -7,7 +7,7 @@ app.set('view engine', 'ejs');
 app.use("/public", express.static(__dirname + "/public"));
 app.use(express.urlencoded({ extended: true }));
 
-let station2 = [
+let youkaisyoukai = [
   { id:1, name:"ジバニャン", attribute:"プリチー", specialmove:"百裂肉球" , overview:"トラックの動きを一瞬止める"},
   { id:2, name:"ジバニャン", attribute:"プリチー", specialmove:"百裂肉球" , overview:"トラックの動きを一瞬止める"},
 
@@ -15,5 +15,8 @@ let station2 = [
 
 app.get("/youkai", (req, res) => {
   // 本来ならここにDBとのやり取りが入る
-  res.render('youkai', {data: station2} );
+  res.render('youkai', {data: youkaisyoukai} );
 });
+
+
+
