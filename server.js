@@ -6,7 +6,7 @@ const app = express();
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
 
-/* ===== データ ===== */
+//データ：ユニットごとに割れてから個人，プロフィール内容はホームページ参考にする
 const groups = {
   liella: {
     name: "Liella!",
@@ -199,12 +199,12 @@ const groups = {
 
 
 
-/* ===== トップ（グループ選択） ===== */
+//トップページ
 app.get("/", (req, res) => {
   res.render("ll_index");
 });
 
-/* ===== ユニット選択 ===== */
+//ユニット一覧：エラー処理，第二
 app.get("/:group", (req, res) => {
   const group = groups[req.params.group];
   if (!group) return res.send("グループが見つかりません");
@@ -215,7 +215,7 @@ app.get("/:group", (req, res) => {
   });
 });
 
-/* ===== キャラクター一覧 ===== */
+//キャラページ：エラー処理，第さん
 app.get("/:group/:unit", (req, res) => {
   const { group, unit } = req.params;
   const unitData = groups[group]?.units[unit];
@@ -228,7 +228,7 @@ app.get("/:group/:unit", (req, res) => {
   });
 });
 
-/* ===== プロフィール ===== */
+//プロフィール：エラー処理入れる，最終ページ
 app.get("/:group/:unit/:id", (req, res) => {
   const { group, unit, id } = req.params;
   const member = groups[group]?.units[unit]?.members[id];
@@ -242,11 +242,10 @@ app.get("/:group/:unit/:id", (req, res) => {
 });
 
 
-/* ===== 追加 ===== */
+//追加：詳細情報を入れる
 app.post("/:group/:unit/add", (req, res) => {
   const { group, unit } = req.params;
   const members = groups[group].units[unit].members;
-
   const newMember = {
     id: members.length,
     name: req.body.name,
@@ -268,14 +267,14 @@ app.post("/:group/:unit/add", (req, res) => {
 });
 
 
-/* ===== 削除 ===== */
+//削除
 app.post("/:group/:unit/:id/delete", (req, res) => {
   const { group, unit, id } = req.params;
   const members = groups[group].units[unit].members;
 
   members.splice(id, 1);
 
-  // id を振り直す
+  // idが被らないようにする
   members.forEach((m, i) => (m.id = i));
 
   res.redirect(`/${group}/${unit}`);

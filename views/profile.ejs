@@ -1,3 +1,4 @@
+<!-- 第四ページ，最後のページ，中央寄せ，背景白，文字ピンク -->
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -11,7 +12,6 @@
       background-color: white;
     }
 
-    /* 上部タイトル */
     .header {
         
       color: #ff5fa2;
@@ -21,14 +21,12 @@
       font-weight: bold;
     }
 
-    /* プロフィール全体 */
     .profile {
       max-width: 420px;
       margin: 0 auto;
       padding: 10px 16px;
     }
 
-    /* 1行分 */
     .row {
       display: flex;
       align-items: center;
@@ -46,7 +44,6 @@
       color: #333;
     }
 
-    /* 戻るリンク */
     .back {
       text-align: center;
       margin: 20px 0;
@@ -63,59 +60,55 @@
 
 <div class="header">プロフィール</div>
 
-<!-- 年齢 -->
+<!-- 〜歳 -->
 <div class="row">
   <span class="label">年齢</span>
   <span class="value"><%= idol.profile.age %>歳</span>
 </div>
 
-<!-- 血液型 -->
+<!-- 〜型 -->
 <div class="row">
   <span class="label">血液型</span>
   <span class="value"><%= idol.profile.blood %>型</span>
 </div>
 
-<!-- 誕生日 -->
 <div class="row">
   <span class="label">誕生日</span>
   <span class="value"><%= idol.profile.birthday %></span>
 </div>
 
-<!-- 星座 -->
 <div class="row">
   <span class="label">星座</span>
   <span class="value"><%= idol.profile.zodiac %></span>
 </div>
 
-<!-- 身長 -->
+<!-- 〜cm -->
 <div class="row">
   <span class="label">身長</span>
   <span class="value"><%= idol.profile.height %>cm</span>
 </div>
 
-<!-- 体重 -->
+<!-- 〜kg -->
 <div class="row">
   <span class="label">体重</span>
   <span class="value"><%= idol.profile.weight %>kg</span>
 </div>
 
-<!-- スリーサイズ -->
 <div class="row">
   <span class="label">スリーサイズ</span>
   <span class="value"><%= idol.profile.size %></span>
 </div>
 
-<!-- 出身地 -->
 <div class="row">
   <span class="label">出身地</span>
   <span class="value"><%= idol.profile.birthplace %></span>
 </div>
 
-<!-- 趣味 -->
 <div class="row">
   <span class="label">趣味</span>
   <span class="value"><%= idol.profile.hobby %></span>
 </div>
+
 
 <div class="back">
   <a href="/">トップページに戻る</a><br>

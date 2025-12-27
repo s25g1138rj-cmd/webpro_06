@@ -7,7 +7,7 @@ app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
 app.use("/public", express.static(__dirname + "/public"));
 
-//===== データ ===== 
+//データ：5シリーズ各三人ずついれる，プロフィール内容はホームページを参考にする
 const systems = {
   aimasu: {
     name: "アイドルマスター",
@@ -85,33 +85,20 @@ const systems = {
   }
 };
 
-// ===== トップページ（ブランド選択） ===== 
+// トップページ：５つのシリーズを並べる
 app.get("/", (req, res) => {
   res.render("index");
 });
 
 
-// ===== プロフィール ===== 
+//プロフィール：見るだけ，最後のページ，内容はホームページを参考にする
 app.get("/:brand/:id/profile", (req, res) => {
   const brand = req.params.brand;
   const id = Number(req.params.id);
-  const system = systems[brand];
 
-  if (!system) {
-    return res.send("シリーズが見つかりません");
-  }
+  const idol = systems[brand].idols[id];
 
-  const idol = system.idols.find(i => i.id === id);
-
-  if (!idol) {
-    return res.send("アイドルが見つかりません");
-  }
-
-  res.render("profile", {
-    brand,
-    id,
-    idol
-  });
+  res.render("profile", { idol, brand, id });
 });
 
 
@@ -119,62 +106,34 @@ app.get("/:brand/:id/profile", (req, res) => {
 
 
 
-// ===== 詳細 ===== 
+//詳細：名前を選択した後
 app.get("/:brand/:id", (req, res) => {
   const brand = req.params.brand;
   const id = Number(req.params.id);
-  const system = systems[brand];
 
-  if (!system) {
-    return res.send("シリーズが見つかりません");
-  }
+  const idol = systems[brand].idols[id];
 
-  const idol = system.idols.find(i => i.id === id);
-
-  if (!idol) {
-    return res.send("アイドルが見つかりません");
-  }
-
-  res.render("detail", {
-    brand,
-    id,
-    idol
-  });
+  res.render("detail", { idol, brand, id });
 });
 
 
-// ===== 一覧 =====
+//一覧：名前を並べる
 app.get("/:brand", (req, res) => {
   const brand = req.params.brand;
   const system = systems[brand];
 
-  if (!system) {
-    return res.status(404).send("存在しないシリーズです");
-  }
-
-  res.render("list", {
-    system,
-    brand
-  });
+  res.render("list", { system, brand });
 });
 
 
-/* ===== 追加 ===== */
+
+// 追加：名前とプロフィール内容を入れたうえで追加→一覧ページに名前が表示され，プロフィールも追加される
 app.post("/:brand/add", (req, res) => {
   const brand = req.params.brand;
   const system = systems[brand];
 
-  if (!system) {
-    return res.status(404).send("存在しないシリーズです");
-  }
-
-  const newId =
-    system.idols.length > 0
-      ? Math.max(...system.idols.map(i => i.id)) + 1
-      : 0;
-
   system.idols.push({
-    id: newId,
+    id: system.idols.length,
     name: req.body.name,
     profile: {
       age: req.body.age,
@@ -185,7 +144,7 @@ app.post("/:brand/add", (req, res) => {
       weight: req.body.weight,
       size: req.body.size,
       birthplace: req.body.birthplace,
-      hobby: req.body.hobby,
+      hobby: req.body.hobby
     }
   });
 
@@ -193,21 +152,13 @@ app.post("/:brand/add", (req, res) => {
 });
 
 
-/* ===== 編集 ===== */
+
+//編集：プロフィール内容を編集
 app.post("/:brand/:id/update", (req, res) => {
   const brand = req.params.brand;
   const id = Number(req.params.id);
-  const system = systems[brand];
 
-  if (!system) {
-    return res.status(404).send("存在しないシリーズです");
-  }
-
-  const idol = system.idols.find(i => i.id === id);
-
-  if (!idol) {
-    return res.status(404).send("アイドルが見つかりません");
-  }
+  const idol = systems[brand].idols[id];
 
   idol.name = req.body.name;
   idol.profile = {
@@ -226,26 +177,17 @@ app.post("/:brand/:id/update", (req, res) => {
 });
 
 
-/* ===== 削除 ===== */
+
+// 削除 ：クリックしたら削除される
 app.post("/:brand/:id/delete", (req, res) => {
   const brand = req.params.brand;
   const id = Number(req.params.id);
-  const system = systems[brand];
 
-  if (!system) {
-    return res.status(404).send("存在しないシリーズです");
-  }
-
-  const index = system.idols.findIndex(i => i.id === id);
-
-  if (index === -1) {
-    return res.status(404).send("アイドルが見つかりません");
-  }
-
-  system.idols.splice(index, 1);
+  systems[brand].idols.splice(id, 1);
 
   res.redirect(`/${brand}`);
 });
+
 
 
 app.listen(8080, () => console.log("aidorumasuta- started on port 8080"));

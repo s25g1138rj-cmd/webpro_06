@@ -1,3 +1,4 @@
+<!-- 第二ページキャラクラーの名前を選択，追加機能を入れる -->
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -9,9 +10,9 @@
 <h1>妖怪一覧</h1>
 
 <ul>
-  <% youkaiList.forEach(y => { %>
+  <% youkaiList.forEach((y, index) => { %>
     <li>
-      <a href="/youkai/<%= y.id %>"><%= y.name %></a>
+      <a href="/youkai/<%= index %>"><%= y.name %></a>
     </li>
   <% }) %>
 </ul>

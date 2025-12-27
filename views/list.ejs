@@ -1,3 +1,4 @@
+<!-- アイドル一覧ページ，第二，追加（詳細入れる），戻るボタン，背景白，文字ピンク -->
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -11,16 +12,15 @@
       padding: 24px;
       background: white;
       color: #333;
-      text-align: center;   /* 全体中央寄せ */
+      text-align: center;   
     }
 
-    /* ===== 見出し ===== */
+
     h2 {
       color: #ff4f9a;
       margin-bottom: 16px;
     }
 
-    /* ===== リンク ===== */
     a {
       color: #ff4f9a;
       font-weight: bold;
@@ -31,13 +31,12 @@
       text-decoration: underline;
     }
 
-    /* ===== 一覧コンテナ ===== */
+
     .container {
       max-width: 400px;
-      margin: 20px auto;   /* 中央寄せ */
+      margin: 20px auto;  
     }
 
-    /* ===== アイドル1人分 ===== */
     .idol {
       background: white;
       border: 2px solid #ff4f9a;
@@ -54,7 +53,6 @@
 
   <a href="/">トップページに戻る</a>
 
-  <!-- 一覧 -->
   <div class="container">
     <% system.idols.forEach(idol => { %>
       <div class="idol">

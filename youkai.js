@@ -6,7 +6,7 @@ const app = express();
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
 
-/* ===== データ ===== */
+//データ：アニメのホームページを参考にする
 const youkaiList = [
   {
     id: 1,
@@ -84,21 +84,15 @@ app.get("/youkai", (req, res) => {
   });
 });
 
-// 妖怪詳細
+// 妖怪詳細：最終ページ
 app.get("/youkai/:id", (req, res) => {
   const id = Number(req.params.id);
-  const youkai = youkaiList.find(y => y.id === id);
+  const youkai = youkaiList[id];
 
-  if (!youkai) {
-    return res.status(404).send("妖怪が見つかりません");
-  }
-
-  res.render("y_detail", {
-    youkai
-  });
+  res.render("y_detail", { youkai });
 });
 
-/* ===== 追加 ===== */
+//追加：名前，詳細内容を入れたうえで追加
 app.post("/youkai/add", (req, res) => {
   const newId =
     youkaiList.length === 0
@@ -116,7 +110,7 @@ app.post("/youkai/add", (req, res) => {
 });
 
 
-/* ===== 変更 ===== */
+//編集：詳細内容を編集
 app.post("/youkai/:id/edit", (req, res) => {
   const id = Number(req.params.id);
   const youkai = youkaiList.find(y => y.id === id);
@@ -133,7 +127,7 @@ app.post("/youkai/:id/edit", (req, res) => {
 });
 
 
-/* ===== 削除 ===== */
+//削除
 app.post("/youkai/:id/delete", (req, res) => {
   const id = Number(req.params.id);
   const index = youkaiList.findIndex(y => y.id === id);
