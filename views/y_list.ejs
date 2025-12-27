@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>妖怪一覧</title>
+</head>
+<body>
+
+<h1>妖怪一覧</h1>
+
+<ul>
+  <% youkaiList.forEach(y => { %>
+    <li>
+      <a href="/youkai/<%= y.id %>"><%= y.name %></a>
+    </li>
+  <% }) %>
+</ul>
+
+<h2>妖怪追加</h2>
+<form action="/youkai/add" method="post">
+  名前 <input name="name"><br>
+  種族 <input name="tribe"><br>
+  説明 <input name="description"><br>
+  <button>追加</button>
+</form>
+
+<a href="/">トップへ</a>
+
+
+</body>
+</html>

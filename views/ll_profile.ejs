@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title><%= member.name %> プロフィール</title>
+<style>
+  body { margin:0; font-family:sans-serif; background:#f3ecfb; color:#333; text-align:center; }
+  header { background:linear-gradient(135deg,#f3ecfb,#f3ecfb); color:#7b4bb7; padding:24px; font-size:26px; font-weight:bold; }
+  .profile { max-width:420px; margin:30px auto; background:white; padding:16px; border-radius:16px; box-shadow:0 4px 10px rgba(123,75,183,0.2); text-align:left; }
+  .row { display:flex; padding:8px 0; border-bottom:1px solid #e6dff2; }
+  .label { width:140px; color:#7b4bb7; font-weight:bold; }
+  .value { color:#333; }
+  .back { text-align:center; margin:20px 0; }
+  a { color:#7b4bb7; text-decoration:none; font-weight:bold; }
+  a:hover { color:#7b4bb7; }
+</style>
+</head>
+<body>
+
+<header><%= member.name %> プロフィール</header>
+
+<div class="profile">
+  <div class="row"><span class="label">誕生日</span><span class="value"><%= member.profile.birthday %></span></div>
+  <div class="row"><span class="label">血液型</span><span class="value"><%= member.profile.blood %></span></div>
+  <div class="row"><span class="label">身長</span><span class="value"><%= member.profile.height %></span></div>
+  <div class="row"><span class="label">趣味</span><span class="value"><%= member.profile.hobby %></span></div>
+  <div class="row"><span class="label">特技</span><span class="value"><%= member.profile.skill %></span></div>
+  <div class="row"><span class="label">好きな食べ物</span><span class="value"><%= member.profile.food %></span></div>
+  <div class="row"><span class="label">好きな言葉</span><span class="value"><%= member.profile.word %></span></div>
+  <div class="row"><span class="label">好きな教科</span><span class="value"><%= member.profile.subject %></span></div>
+  <div class="row"><span class="label">好きな動物</span><span class="value"><%= member.profile.animal %></span></div>
+</div>
+
+<div class="back">
+  <a href="/<%= group %>/<%= unit %>">一覧に戻る</a>
+</div>
+
+<h3 style="text-align:center;">プロフィール編集</h3>
+
+<form action="/<%= group %>/<%= unit %>/<%= member.id %>/edit"
+      method="post" class="profile">
+
+  <input name="name" value="<%= member.name %>"><br>
+  <input name="birthday" value="<%= member.profile.birthday %>"><br>
+  <input name="blood" value="<%= member.profile.blood %>"><br>
+  <input name="height" value="<%= member.profile.height %>"><br>
+  <input name="hobby" value="<%= member.profile.hobby %>"><br>
+  <input name="skill" value="<%= member.profile.skill %>"><br>
+  <input name="food" value="<%= member.profile.food %>"><br>
+  <input name="word" value="<%= member.profile.word %>"><br>
+  <input name="subject" value="<%= member.profile.subject %>"><br>
+  <input name="animal" value="<%= member.profile.animal %>"><br>
+
+  <button type="submit">変更</button>
+</form>
+
+
+</body>
+</html>

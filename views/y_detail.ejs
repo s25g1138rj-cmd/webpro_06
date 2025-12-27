@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title><%= youkai.name %></title>
+</head>
+<body>
+
+<h1><%= youkai.name %></h1>
+
+<p>種族：<%= youkai.tribe %></p>
+<p>説明：<%= youkai.description %></p>
+
+<h2>編集</h2>
+<form action="/youkai/<%= youkai.id %>/edit" method="post">
+  名前 <input name="name" value="<%= youkai.name %>"><br>
+  種族 <input name="tribe" value="<%= youkai.tribe %>"><br>
+  説明 <input name="description" value="<%= youkai.description %>"><br>
+  <button>変更</button>
+</form>
+
+<form action="/youkai/<%= youkai.id %>/delete" method="post">
+  <button>削除</button>
+</form>
+
+<a href="/youkai">一覧へ戻る</a>
+
+
+</body>
+</html>

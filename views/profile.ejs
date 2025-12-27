@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>プロフィール</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background-color: white;
+    }
+
+    /* 上部タイトル */
+    .header {
+        
+      color: #ff5fa2;
+      text-align: center;
+      padding: 20px;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    /* プロフィール全体 */
+    .profile {
+      max-width: 420px;
+      margin: 0 auto;
+      padding: 10px 16px;
+    }
+
+    /* 1行分 */
+    .row {
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid #ddd;
+      padding: 10px 0;
+    }
+
+    .label {
+      width: 120px;
+      color: #ff5fa2;
+      font-weight: bold;
+    }
+
+    .value {
+      color: #333;
+    }
+
+    /* 戻るリンク */
+    .back {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .back a {
+      color: #ff5fa2;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+<div class="header">プロフィール</div>
+
+<!-- 年齢 -->
+<div class="row">
+  <span class="label">年齢</span>
+  <span class="value"><%= idol.profile.age %>歳</span>
+</div>
+
+<!-- 血液型 -->
+<div class="row">
+  <span class="label">血液型</span>
+  <span class="value"><%= idol.profile.blood %>型</span>
+</div>
+
+<!-- 誕生日 -->
+<div class="row">
+  <span class="label">誕生日</span>
+  <span class="value"><%= idol.profile.birthday %></span>
+</div>
+
+<!-- 星座 -->
+<div class="row">
+  <span class="label">星座</span>
+  <span class="value"><%= idol.profile.zodiac %></span>
+</div>
+
+<!-- 身長 -->
+<div class="row">
+  <span class="label">身長</span>
+  <span class="value"><%= idol.profile.height %>cm</span>
+</div>
+
+<!-- 体重 -->
+<div class="row">
+  <span class="label">体重</span>
+  <span class="value"><%= idol.profile.weight %>kg</span>
+</div>
+
+<!-- スリーサイズ -->
+<div class="row">
+  <span class="label">スリーサイズ</span>
+  <span class="value"><%= idol.profile.size %></span>
+</div>
+
+<!-- 出身地 -->
+<div class="row">
+  <span class="label">出身地</span>
+  <span class="value"><%= idol.profile.birthplace %></span>
+</div>
+
+<!-- 趣味 -->
+<div class="row">
+  <span class="label">趣味</span>
+  <span class="value"><%= idol.profile.hobby %></span>
+</div>
+
+<div class="back">
+  <a href="/">トップページに戻る</a><br>
+  <a href="javascript:history.back()">前のページに戻る</a>
+</div>
+
+</body>
+</html>

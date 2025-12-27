@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title><%= idol.name %></title>
+
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 24px;
+      background: white;
+      color: #333;
+      text-align: center;   /* 中央寄せ */
+    }
+
+    h2 {
+      color: #ff4f9a;
+      margin-bottom: 16px;
+    }
+
+    a {
+      display: inline-block;
+      margin: 6px 0;
+      color: #ff4f9a;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    form {
+      margin: 16px 0;
+    }
+
+    input {
+      padding: 6px;
+      font-size: 16px;
+      border: 1px solid #ff4f9a;
+      border-radius: 4px;
+    }
+
+    button {
+      padding: 6px 12px;
+      margin-left: 6px;
+      font-size: 14px;
+      border: none;
+      border-radius: 4px;
+      background: #ff4f9a;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #ff4f9a;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h2><%= idol.name %></h2>
+
+  
+
+<form method="post" action="/<%= brand %>/<%= id %>/update">
+  <input name="name" value="<%= idol.name %>" placeholder="名前"><br>
+
+  <input name="age" value="<%= idol.profile.age %>" placeholder="年齢"><br>
+  <input name="blood" value="<%= idol.profile.blood %>" placeholder="血液型"><br>
+  <input name="birthday" value="<%= idol.profile.birthday %>" placeholder="誕生日"><br>
+  <input name="zodiac" value="<%= idol.profile.zodiac %>" placeholder="星座"><br>
+  <input name="height" value="<%= idol.profile.height %>" placeholder="身長"><br>
+  <input name="weight" value="<%= idol.profile.weight %>" placeholder="体重"><br>
+  <input name="size" value="<%= idol.profile.size %>" placeholder="スリーサイズ"><br>
+  <input name="birthplace" value="<%= idol.profile.birthplace %>" placeholder="出身地"><br>
+  <input name="hobby" value="<%= idol.profile.hobby %>" placeholder="趣味"><br>
+
+  <button>編集</button>
+</form>
+
+<form method="post" action="/<%= brand %>/<%= id %>/delete">
+  <button>削除</button>
+</form>
+
+
+  <a href="/<%= brand %>/<%= id %>/profile">★ プロフィール ★</a><br>
+  <a href="/<%= brand %>">一覧へ戻る</a><br>
+  <a href="/">トップページに戻る</a><br>
+
+</body>
+</html>

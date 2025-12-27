@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>アイドル一覧</title>
+
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 24px;
+      background: white;
+      color: #333;
+      text-align: center;   /* 全体中央寄せ */
+    }
+
+    /* ===== 見出し ===== */
+    h2 {
+      color: #ff4f9a;
+      margin-bottom: 16px;
+    }
+
+    /* ===== リンク ===== */
+    a {
+      color: #ff4f9a;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* ===== 一覧コンテナ ===== */
+    .container {
+      max-width: 400px;
+      margin: 20px auto;   /* 中央寄せ */
+    }
+
+    /* ===== アイドル1人分 ===== */
+    .idol {
+      background: white;
+      border: 2px solid #ff4f9a;
+      border-radius: 8px;
+      padding: 14px;
+      margin-bottom: 12px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h2><%= system.name %> 一覧</h2>
+
+  <a href="/">トップページに戻る</a>
+
+  <!-- 一覧 -->
+  <div class="container">
+    <% system.idols.forEach(idol => { %>
+      <div class="idol">
+        <a href="/<%= brand %>/<%= idol.id %>">
+          <%= idol.name %>
+        </a>
+      </div>
+    <% }) %>
+  </div>
+
+
+<form method="post" action="/<%= brand %>/add">
+  <input name="name" placeholder="名前"><br>
+  <input name="age" placeholder="年齢"><br>
+  <input name="blood" placeholder="血液型"><br>
+  <input name="birthday" placeholder="誕生日"><br>
+  <input name="zodiac" placeholder="星座"><br>
+  <input name="height" placeholder="身長"><br>
+  <input name="weight" placeholder="体重"><br>
+  <input name="size" placeholder="スリーサイズ"><br>
+  <input name="birthplace" placeholder="出身地"><br>
+  <input name="hobby" placeholder="趣味"><br>
+
+  <button>追加</button>
+</form>
+
+
+</body>
+</html>

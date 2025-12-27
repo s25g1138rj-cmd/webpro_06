@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>キャラクター一覧</title>
+<style>
+  body { margin:0; font-family:sans-serif; background:white; color:#333; text-align:center; }
+  header { background:linear-gradient(135deg,white,white); color:#7b4bb7; padding:24px; font-size:26px; font-weight:bold; }
+  .container { max-width:500px; margin:30px auto; }
+  .card { background:white; border-radius:16px; padding:16px; margin-bottom:16px; text-align:center; box-shadow:0 4px 10px rgba(123,75,183,0.18); }
+  a { text-decoration:none; color:#7b4bb7; font-weight:bold; }
+  a:hover { color:#4b2c82; }
+</style>
+</head>
+<body>
+
+<header><%= unitData.name %> キャラクター一覧</header>
+
+<div class="container">
+  <% unitData.members.forEach(member => { %>
+    <div class="card">
+      <a href="/<%= group %>/<%= unit %>/<%= member.id %>">
+        <%= member.name %>
+      </a>
+
+      <form action="/<%= group %>/<%= unit %>/<%= member.id %>/delete"
+            method="post" style="margin-top:8px;">
+        <button type="submit">削除</button>
+      </form>
+    </div>
+  <% }) %>
+</div>
+
+<a href="/<%= group %>">ユニット選択に戻る</a>
+
+
+<h3>キャラクター追加</h3>
+
+<form action="/<%= group %>/<%= unit %>/add" method="post">
+  <input name="name" placeholder="名前"><br>
+  <input name="birthday" placeholder="誕生日"><br>
+  <input name="blood" placeholder="血液型"><br>
+  <input name="height" placeholder="身長"><br>
+  <input name="hobby" placeholder="趣味"><br>
+  <input name="skill" placeholder="特技"><br>
+  <input name="food" placeholder="好きな食べ物"><br>
+  <input name="word" placeholder="好きな言葉"><br>
+  <input name="subject" placeholder="好きな教科"><br>
+  <input name="animal" placeholder="好きな動物"><br>
+  <button type="submit">追加</button>
+</form>
+
+
+
+
+
+
+
+
+</body>
+</html>

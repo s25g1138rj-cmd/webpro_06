@@ -1,0 +1,38 @@
+flowchart TD
+    A[トップページ<br>/] 
+
+    A --> B1[アイドルマスター一覧<br>/aimasu]
+    A --> B2[シンデレラガールズ一覧<br>/deresute]
+    A --> B3[ミリオンライブ一覧<br>/mirirai]
+    A --> B4[シャイニーカラーズ一覧<br>/syanimasu]
+    A --> B5[学園アイドルマスター一覧<br>/gakumasu]
+
+    B1 --> C1[アイドル詳細<br>/aimasu/:id]
+    B2 --> C2[アイドル詳細<br>/deresute/:id]
+    B3 --> C3[アイドル詳細<br>/mirirai/:id]
+    B4 --> C4[アイドル詳細<br>/syanimasu/:id]
+    B5 --> C5[アイドル詳細<br>/gakumasu/:id]
+
+    C1 --> D1[プロフィール<br>/aimasu/:id/profile]
+    C2 --> D2[プロフィール<br>/deresute/:id/profile]
+    C3 --> D3[プロフィール<br>/mirirai/:id/profile]
+    C4 --> D4[プロフィール<br>/syanimasu/:id/profile]
+    C5 --> D5[プロフィール<br>/gakumasu/:id/profile]
+
+    C1 --> B1
+    C2 --> B2
+    C3 --> B3
+    C4 --> B4
+    C5 --> B5
+
+    D1 --> C1
+    D2 --> C2
+    D3 --> C3
+    D4 --> C4
+    D5 --> C5
+
+    B1 --> A
+    B2 --> A
+    B3 --> A
+    B4 --> A
+    B5 --> A
